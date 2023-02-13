@@ -5,10 +5,6 @@ import com.lazaro.kata.model.World;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -27,69 +23,29 @@ public class App
         String roverDirection = reader.next();
         
         Robot robot = new Robot(roverPosX, roverPosY, roverDirection.charAt(0));
-        
         World world = new World(sizex, sizey, robot);
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
             String command = reader.next();
             if (command.equals("f")) {
-                if (roverDirection.equals("n")) {
-                    roverPosY += 1;
-                }
-                if (roverDirection.equals("w")) {
-                    roverPosX -= 1;
-                }
-                if (roverDirection.equals("s")) {
-                    roverPosY -= 1;
-                }
-                if (roverDirection.equals("e")) {
-                    roverPosX += 1;
-                }
+                world.getRobot().advance();
             }
             if (command.equals("b")) {
-                if (roverDirection.equals("n")) {
-                    roverPosY -= 1;
-                }
-                if (roverDirection.equals("w")) {
-                    roverPosX += 1;
-                }
-                if (roverDirection.equals("s")) {
-                    roverPosY += 1;
-                }
-                if (roverDirection.equals("e")) {
-                    roverPosX -= 1;
-                }
+                world.getRobot().moveBack();
             }
             if (command.equals("l")) {
-                if (roverDirection.equals("n")) {
-                    roverDirection = "w";
-                }
-                if (roverDirection.equals("w")) {
-                    roverDirection = "s";
-                }
-                if (roverDirection.equals("s")) {
-                    roverDirection = "e";
-                }
-                if (roverDirection.equals("e")) {
-                    roverDirection = "n";
-                }
+                world.getRobot().rotateLeft();
             }
             if (command.equals("r")) {
-                if (roverDirection.equals("n")) {
-                    roverDirection = "e";
-                }
-                if (roverDirection.equals("e")) {
-                    roverDirection = "s";
-                }
-                if (roverDirection.equals("s")) {
-                    roverDirection = "w";
-                }
-                if (roverDirection.equals("w")) {
-                    roverDirection = "n";
-                }
+                world.getRobot().rotateRight();
             }
-            System.out.println(String.format("Rover is at x:%d y:%d facing:%s", roverPosX, roverPosY, roverDirection));
+            System.out.println(String.format(
+                    "Rover is at x:%d y:%d facing:%s",
+                    world.getRobot().getPositionX(),
+                    world.getRobot().getPositionY(),
+                    world.getRobot().getDirection())
+            );
         } while (true);
     }
 }
