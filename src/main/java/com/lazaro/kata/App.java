@@ -1,5 +1,8 @@
 package com.lazaro.kata;
 
+import com.lazaro.kata.model.Robot;
+import com.lazaro.kata.model.World;
+
 import java.util.Scanner;
 
 /**
@@ -16,73 +19,77 @@ public class App
         System.out.println("Insert vertical map size:");
         int sizey = reader.nextInt();
 
-        System.out.println("Insert horizontal initial rover position:");
-        int roverx = reader.nextInt();
-        System.out.println("Insert vertical initial rover position:");
-        int rovery = reader.nextInt();
-        System.out.println("Insert initial rover direction:");
-        String roverz = reader.next(); //n = north, e = east, w = west, s = south
+        System.out.println("Insert horizontal initial robot position:");
+        int roverPosX = reader.nextInt();
+        System.out.println("Insert vertical initial robot position:");
+        int roverPosY = reader.nextInt();
+        System.out.println("Insert initial robot direction:");
+        String roverDirection = reader.next();
+        
+        Robot robot = new Robot(roverPosX, roverPosY, roverDirection.charAt(0));
+        
+        World world = new World(sizex, sizey, robot);
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
             String command = reader.next();
             if (command.equals("f")) {
-                if (roverz.equals("n")) {
-                    rovery += 1;
+                if (roverDirection.equals("n")) {
+                    roverPosY += 1;
                 }
-                if (roverz.equals("w")) {
-                    roverx -= 1;
+                if (roverDirection.equals("w")) {
+                    roverPosX -= 1;
                 }
-                if (roverz.equals("s")) {
-                    rovery -= 1;
+                if (roverDirection.equals("s")) {
+                    roverPosY -= 1;
                 }
-                if (roverz.equals("e")) {
-                    roverx += 1;
+                if (roverDirection.equals("e")) {
+                    roverPosX += 1;
                 }
             }
             if (command.equals("b")) {
-                if (roverz.equals("n")) {
-                    rovery -= 1;
+                if (roverDirection.equals("n")) {
+                    roverPosY -= 1;
                 }
-                if (roverz.equals("w")) {
-                    roverx += 1;
+                if (roverDirection.equals("w")) {
+                    roverPosX += 1;
                 }
-                if (roverz.equals("s")) {
-                    rovery += 1;
+                if (roverDirection.equals("s")) {
+                    roverPosY += 1;
                 }
-                if (roverz.equals("e")) {
-                    roverx -= 1;
+                if (roverDirection.equals("e")) {
+                    roverPosX -= 1;
                 }
             }
             if (command.equals("l")) {
-                if (roverz.equals("n")) {
-                    roverz = "w";
+                if (roverDirection.equals("n")) {
+                    roverDirection = "w";
                 }
-                if (roverz.equals("w")) {
-                    roverz = "s";
+                if (roverDirection.equals("w")) {
+                    roverDirection = "s";
                 }
-                if (roverz.equals("s")) {
-                    roverz = "e";
+                if (roverDirection.equals("s")) {
+                    roverDirection = "e";
                 }
-                if (roverz.equals("e")) {
-                    roverz = "n";
+                if (roverDirection.equals("e")) {
+                    roverDirection = "n";
                 }
             }
             if (command.equals("r")) {
-                if (roverz.equals("n")) {
-                    roverz = "e";
+                if (roverDirection.equals("n")) {
+                    roverDirection = "e";
                 }
-                if (roverz.equals("e")) {
-                    roverz = "s";
+                if (roverDirection.equals("e")) {
+                    roverDirection = "s";
                 }
-                if (roverz.equals("s")) {
-                    roverz = "w";
+                if (roverDirection.equals("s")) {
+                    roverDirection = "w";
                 }
-                if (roverz.equals("w")) {
-                    roverz = "n";
+                if (roverDirection.equals("w")) {
+                    roverDirection = "n";
                 }
             }
-            System.out.println(String.format("Rover is at x:%d y:%d facing:%s", roverx, rovery, roverz));
+            System.out.println(String.format("Rover is at x:%d y:%d facing:%s", roverPosX, roverPosY, roverDirection));
         } while (true);
     }
 }
