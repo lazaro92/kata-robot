@@ -11,5 +11,7 @@ public class World {
     private int sizeX;
     private int sizeY;
 
-    private Robot robot;
+    private Rover rover;
+
+
 }

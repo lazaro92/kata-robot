@@ -1,6 +1,6 @@
 package com.lazaro.kata;
 
-import com.lazaro.kata.model.Robot;
+import com.lazaro.kata.model.Rover;
 import com.lazaro.kata.model.World;
 
 import java.util.Scanner;
@@ -22,29 +22,29 @@ public class App
         System.out.println("Insert initial robot direction:");
         String roverDirection = reader.next();
         
-        Robot robot = new Robot(roverPosX, roverPosY, roverDirection.charAt(0));
-        World world = new World(sizex, sizey, robot);
+        Rover rover = new Rover(roverPosX, roverPosY, roverDirection.charAt(0));
+        World world = new World(sizex, sizey, rover);
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
             String command = reader.next();
             if (command.equals("f")) {
-                world.getRobot().advance();
+                world.getRover().advance();
             }
             if (command.equals("b")) {
-                world.getRobot().moveBack();
+                world.getRover().moveBack();
             }
             if (command.equals("l")) {
-                world.getRobot().rotateLeft();
+                world.getRover().rotateLeft();
             }
             if (command.equals("r")) {
-                world.getRobot().rotateRight();
+                world.getRover().rotateRight();
             }
             System.out.println(String.format(
                     "Rover is at x:%d y:%d facing:%s",
-                    world.getRobot().getPositionX(),
-                    world.getRobot().getPositionY(),
-                    world.getRobot().getDirection())
+                    world.getRover().getPositionX(),
+                    world.getRover().getPositionY(),
+                    world.getRover().getDirection())
             );
         } while (true);
     }

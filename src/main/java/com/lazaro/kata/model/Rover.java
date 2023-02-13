@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Robot {
+public class Rover {
     private int positionX;
     private int positionY;
     private char direction;
