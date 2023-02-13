@@ -1,4 +1,4 @@
-# Mars Rover Kata
+# Mars Rover Kata (Work In Progress)
 
 Kata from [Kata-log](https://kata-log.rocks/mars-rover-kata)
 
