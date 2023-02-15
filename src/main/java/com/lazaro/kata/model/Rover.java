@@ -12,6 +12,8 @@ public class Rover {
     private int positionY;
     private char direction;
 
+    private World world;
+
     public void rotateRight() {
         switch (direction) {
             case 'n' -> direction = 'e';
@@ -32,19 +34,43 @@ public class Rover {
 
     public void advance() {
         switch (direction) {
-            case 'n' -> positionY--;
-            case 'e' -> positionX++;
-            case 's' -> positionY++;
-            case 'w' -> positionX--;
+            case 'n' -> {
+                if (positionY == 0) positionY = world.getSizeY() - 1;
+                else positionY--;
+            }
+            case 'e' -> {
+                if (positionX == world.getSizeX() - 1) positionX = 0;
+                else positionX++;
+            }
+            case 's' -> {
+                if (positionY == world.getSizeY() - 1) positionY = 0;
+                else positionY++;
+            }
+            case 'w' -> {
+                if (positionX == 0) positionX = world.getSizeX() - 1;
+                else positionX--;
+            }
         }
     }
 
     public void moveBack() {
         switch (direction) {
-            case 'n' -> positionY++;
-            case 'e' -> positionX--;
-            case 's' -> positionY--;
-            case 'w' -> positionX++;
+            case 'n' -> {
+                if (positionY == world.getSizeY() - 1) positionY = 0;
+                else positionY++;
+            }
+            case 'e' -> {
+                if (positionX == 0) positionX = world.getSizeX() - 1;
+                else positionX--;
+            }
+            case 's' -> {
+                if (positionY == 0) positionY = world.getSizeY() - 1;
+                else positionY--;
+            }
+            case 'w' -> {
+                if (positionX == world.getSizeX() - 1) positionX = 0;
+                else positionX++;
+            }
         }
     }
 }

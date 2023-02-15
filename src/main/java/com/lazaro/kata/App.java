@@ -21,30 +21,30 @@ public class App
         int roverPosY = reader.nextInt();
         System.out.println("Insert initial robot direction:");
         String roverDirection = reader.next();
-        
-        Rover rover = new Rover(roverPosX, roverPosY, roverDirection.charAt(0));
-        World world = new World(sizex, sizey, rover);
+
+        World world = new World(sizex, sizey);
+        Rover rover = new Rover(roverPosX, roverPosY, roverDirection.charAt(0), world);
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
             String command = reader.next();
             if (command.equals("f")) {
-                world.getRover().advance();
+                rover.advance();
             }
             if (command.equals("b")) {
-                world.getRover().moveBack();
+                rover.moveBack();
             }
             if (command.equals("l")) {
-                world.getRover().rotateLeft();
+                rover.rotateLeft();
             }
             if (command.equals("r")) {
-                world.getRover().rotateRight();
+                rover.rotateRight();
             }
             System.out.println(String.format(
                     "Rover is at x:%d y:%d facing:%s",
-                    world.getRover().getPositionX(),
-                    world.getRover().getPositionY(),
-                    world.getRover().getDirection())
+                    rover.getPositionX(),
+                    rover.getPositionY(),
+                    rover.getDirection())
             );
         } while (true);
     }

@@ -10,8 +10,4 @@ import lombok.Setter;
 public class World {
     private int sizeX;
     private int sizeY;
-
-    private Rover rover;
-
-
 }
