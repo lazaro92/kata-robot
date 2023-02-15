@@ -50,12 +50,12 @@ public class App
             if (command.equals("r")) {
                 rover.rotateRight();
             }
-            System.out.println(String.format(
-                    "Rover is at x:%d y:%d facing:%s",
+            System.out.printf(
+                    "Rover is at x:%d y:%d facing:%s%n",
                     rover.getPositionX(),
                     rover.getPositionY(),
-                    rover.getDirection().getValue())
-            );
+                    rover.getDirection().getValue());
+            System.out.println(rover.printData());
         } while (true);
     }
 }

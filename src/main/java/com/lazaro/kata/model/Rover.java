@@ -69,4 +69,8 @@ public class Rover {
             }
         }
     }
+
+    public String printData() {
+        return world.generateMap(positionX, positionY, direction);
+    }
 }
