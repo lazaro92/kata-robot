@@ -1,5 +1,6 @@
 package com.lazaro.kata;
 
+import com.lazaro.kata.model.Direction;
 import com.lazaro.kata.model.Rover;
 import com.lazaro.kata.model.World;
 
@@ -22,8 +23,17 @@ public class App
         System.out.println("Insert initial robot direction:");
         String roverDirection = reader.next();
 
+        Direction direction;
+
+        switch (roverDirection) {
+            case "e" -> direction = Direction.EAST;
+            case "s" -> direction = Direction.SOUTH;
+            case "w" -> direction = Direction.WEST;
+            default -> direction = Direction.NORTH;
+        }
+
         World world = new World(sizex, sizey);
-        Rover rover = new Rover(roverPosX, roverPosY, roverDirection.charAt(0), world);
+        Rover rover = new Rover(roverPosX, roverPosY, direction, world);
 
         do {
             System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
@@ -44,7 +54,7 @@ public class App
                     "Rover is at x:%d y:%d facing:%s",
                     rover.getPositionX(),
                     rover.getPositionY(),
-                    rover.getDirection())
+                    rover.getDirection().getValue())
             );
         } while (true);
     }

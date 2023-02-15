@@ -1,6 +1,7 @@
 package com.lazaro.kata;
 
 
+import com.lazaro.kata.model.Direction;
 import com.lazaro.kata.model.Rover;
 import com.lazaro.kata.model.World;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,216 +24,216 @@ public class RoverTest {
     
     @Test
     void rotateRight_directionNorth_directionEast() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.NORTH, world);
         rover.rotateRight();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateRight_directionEast_directionSouth() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.EAST, world);
         rover.rotateRight();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateRight_directionSouth_directionWest() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.SOUTH, world);
         rover.rotateRight();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateRight_directionWest_directionNorth() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.WEST, world);
         rover.rotateRight();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateLeft_directionNorth_directionWest() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.NORTH, world);
         rover.rotateLeft();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateLeft_directionEast_directionNorth() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.EAST, world);
         rover.rotateLeft();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateLeft_directionSouth_directionEast() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.SOUTH, world);
         rover.rotateLeft();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void rotateLeft_directionWest_directionSouth() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.WEST, world);
         rover.rotateLeft();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void advance_directionNorthX5Y5_directionNorthX5Y4() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.NORTH, world);
         rover.advance();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(4, rover.getPositionY());
     }
 
     @Test
     void advance_directionEastX5Y5_directionEastX6Y5() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.EAST, world);
         rover.advance();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(6, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void advance_directionSouthX5Y5_directionSouthX6Y5() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.SOUTH, world);
         rover.advance();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(6, rover.getPositionY());
     }
 
     @Test
     void advance_directionWestX5Y5_directionWestX4Y5() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.WEST, world);
         rover.advance();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(4, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void moveBack_directionNorthX5Y5_directionNorthX5Y6() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.NORTH, world);
         rover.moveBack();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(6, rover.getPositionY());
     }
 
     @Test
     void moveBack_directionEastX5Y5_directionEastX4Y5() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.EAST, world);
         rover.moveBack();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(4, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void moveBack_directionSouthX5Y5_directionSouthX5Y4() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.SOUTH, world);
         rover.moveBack();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(4, rover.getPositionY());
     }
 
     @Test
     void moveBack_directionWestX5Y5_directionWestX6Y5() {
-        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, ORIGINAL_POSITION, Direction.WEST, world);
         rover.moveBack();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(6, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void advance_northWorldLimit_southWorldLimit() {
-        Rover rover = new Rover(ORIGINAL_POSITION, 0, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, 0, Direction.NORTH, world);
         rover.advance();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(WORLD_SIZE_Y - 1, rover.getPositionY());
     }
 
     @Test
     void advance_eastWorldLimit_westWorldLimit() {
-        Rover rover = new Rover(WORLD_SIZE_X - 1, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(WORLD_SIZE_X - 1, ORIGINAL_POSITION, Direction.EAST, world);
         rover.advance();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(0, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void advance_southWorldLimit_northWorldLimit() {
-        Rover rover = new Rover(ORIGINAL_POSITION, WORLD_SIZE_Y-1, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, WORLD_SIZE_Y-1, Direction.SOUTH, world);
         rover.advance();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(0, rover.getPositionY());
     }
 
     @Test
     void advance_westWorldLimit_eastWorldLimit() {
-        Rover rover = new Rover(0, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(0, ORIGINAL_POSITION, Direction.WEST, world);
         rover.advance();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(WORLD_SIZE_X - 1, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void moveBack_northWorldLimit_southWorldLimit() {
-        Rover rover = new Rover(ORIGINAL_POSITION, 0, 's', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, 0, Direction.SOUTH, world);
         rover.moveBack();
-        assertEquals('s', rover.getDirection());
+        assertEquals(Direction.SOUTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(WORLD_SIZE_Y - 1, rover.getPositionY());
     }
 
     @Test
     void moveBack_eastWorldLimit_westWorldLimit() {
-        Rover rover = new Rover(WORLD_SIZE_X - 1, ORIGINAL_POSITION, 'w', world);
+        Rover rover = new Rover(WORLD_SIZE_X - 1, ORIGINAL_POSITION, Direction.WEST, world);
         rover.moveBack();
-        assertEquals('w', rover.getDirection());
+        assertEquals(Direction.WEST, rover.getDirection());
         assertEquals(0, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }
 
     @Test
     void moveBack_southWorldLimit_northWorldLimit() {
-        Rover rover = new Rover(ORIGINAL_POSITION, WORLD_SIZE_Y - 1, 'n', world);
+        Rover rover = new Rover(ORIGINAL_POSITION, WORLD_SIZE_Y - 1, Direction.NORTH, world);
         rover.moveBack();
-        assertEquals('n', rover.getDirection());
+        assertEquals(Direction.NORTH, rover.getDirection());
         assertEquals(ORIGINAL_POSITION, rover.getPositionX());
         assertEquals(0, rover.getPositionY());
     }
 
     @Test
     void moveBack_westWorldLimit_eastWorldLimit() {
-        Rover rover = new Rover(0, ORIGINAL_POSITION, 'e', world);
+        Rover rover = new Rover(0, ORIGINAL_POSITION, Direction.EAST, world);
         rover.moveBack();
-        assertEquals('e', rover.getDirection());
+        assertEquals(Direction.EAST, rover.getDirection());
         assertEquals(WORLD_SIZE_X - 1, rover.getPositionX());
         assertEquals(ORIGINAL_POSITION, rover.getPositionY());
     }

@@ -6,34 +6,30 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Rover {
     private int positionX;
     private int positionY;
-    private char direction;
+    private Direction direction;
 
     private World world;
 
-    public void rotateRight() {
-        switch (direction) {
-            case 'n' -> direction = 'e';
-            case 'e' -> direction = 's';
-            case 's' -> direction = 'w';
-            case 'w' -> direction = 'n';
-        }
+    public Rover(int positionX, int positionY, Direction direction, World world) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.direction = direction;
+        this.world = world;
     }
 
     public void rotateLeft() {
-        switch (direction) {
-            case 'n' -> direction = 'w';
-            case 'e' -> direction = 'n';
-            case 's' -> direction = 'e';
-            case 'w' -> direction = 's';
-        }
+        direction = direction.getLeft();
+    }
+
+    public void rotateRight() {
+        direction = direction.getRight();
     }
 
     public void advance() {
-        switch (direction) {
+        switch (direction.getValue()) {
             case 'n' -> {
                 if (positionY == 0) positionY = world.getSizeY() - 1;
                 else positionY--;
@@ -54,7 +50,7 @@ public class Rover {
     }
 
     public void moveBack() {
-        switch (direction) {
+        switch (direction.getValue()) {
             case 'n' -> {
                 if (positionY == world.getSizeY() - 1) positionY = 0;
                 else positionY++;
