@@ -1,6 +1,5 @@
 package com.lazaro.kata.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +12,10 @@ public class Rover {
 
     private World world;
 
-    public Rover(int positionX, int positionY, Direction direction, World world) {
+    public Rover(int positionX, int positionY, Direction direction) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.direction = direction;
-        this.world = world;
     }
 
     public void rotateLeft() {
