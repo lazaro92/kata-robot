@@ -1,5 +1,6 @@
 package com.lazaro.kata.model;
 
+import com.lazaro.kata.exception.CommandNotFoundException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,8 +9,8 @@ import lombok.Setter;
 public class Rover {
     private int positionX;
     private int positionY;
-    private Direction direction;
 
+    private Direction direction;
     private World world;
 
     public Rover(int positionX, int positionY, Direction direction) {
@@ -18,15 +19,25 @@ public class Rover {
         this.direction = direction;
     }
 
-    public void rotateLeft() {
+    public void executeCommand(String command) throws CommandNotFoundException {
+        switch (command) {
+            case "f" -> advance();
+            case "b" -> moveBack();
+            case "l" -> rotateLeft();
+            case "r" -> rotateRight();
+            default -> throw new CommandNotFoundException();
+        }
+    }
+
+    private void rotateLeft() {
         direction = direction.getLeft();
     }
 
-    public void rotateRight() {
+    private void rotateRight() {
         direction = direction.getRight();
     }
 
-    public void advance() {
+    private void advance() {
         switch (direction.getValue()) {
             case 'n' -> {
                 if (positionY == 0) positionY = world.getSizeY() - 1;
@@ -47,7 +58,7 @@ public class Rover {
         }
     }
 
-    public void moveBack() {
+    private void moveBack() {
         switch (direction.getValue()) {
             case 'n' -> {
                 if (positionY == world.getSizeY() - 1) positionY = 0;

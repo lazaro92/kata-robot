@@ -1,5 +1,6 @@
 package com.lazaro.kata;
 
+import com.lazaro.kata.exception.CommandNotFoundException;
 import com.lazaro.kata.exception.DirectionNotFoundException;
 import com.lazaro.kata.exception.OutOfBoundsException;
 import com.lazaro.kata.model.Direction;
@@ -31,26 +32,19 @@ public class App
 
         String command;
         do {
-            System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right, e = exit):");
+            System.out.println("Insert command (f = forward, b = backward, l = turn left, r = turn right):");
             command = reader.next();
-            if (command.equals("f")) {
-                rover.advance();
-            }
-            if (command.equals("b")) {
-                rover.moveBack();
-            }
-            if (command.equals("l")) {
-                rover.rotateLeft();
-            }
-            if (command.equals("r")) {
-                rover.rotateRight();
-            }
-            if (!command.equals("e")) {
+
+            try {
+                rover.executeCommand(command);
+
                 System.out.printf("Rover is at x:%d y:%d facing:%s%n", rover.getPositionX(), rover.getPositionY(), rover.getDirection().getValue());
                 System.out.println(rover.printData());
+            } catch(CommandNotFoundException exception) {
+                System.err.println(exception.getMessage());
             }
-        } while (!command.equals("e"));
-        System.out.println("Disconnected from rover");
+
+        } while (true);
     }
 
     private static World generateWorldFromInput(String userInput) throws NumberFormatException {
