@@ -9,7 +9,8 @@ Kata from [Kata-log](https://kata-log.rocks/mars-rover-kata)
 
 ## Execution
 
-TODO write the execution steps.
+1. `mvn package` build the JAR file, execute the test during the build and create the package.
+2. `java -jar target/mvn-example-1.0-SNAPSHOT.jar` Execure the project
 
 ## Your Task
 
